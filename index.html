@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<title>The M Residences Story, Told From the Inside · A Content Partnership Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300..500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:        #ede8dc;
+  --paper-deep:   #e2dccd;
+  --ink:          #15140f;
+  --ink-soft:     #2c2a23;
+  --gray:         #6a6457;
+  --accent:       #8d2818;
+  --hairline:     rgba(21, 20, 15, 0.18);
+  --serif:        'Fraunces', 'Times New Roman', serif;
+  --sans:         'DM Sans', system-ui, sans-serif;
+  --mono:         'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  font-feature-settings: 'kern', 'liga', 'calt';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--ink); color: var(--paper); }
+
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.deck { position: fixed; inset: 0; display: flex; flex-direction: column; }
+
+/* ─── CHROME ─────────────────────────────────────────────── */
+
+.chrome {
+  flex: none;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  z-index: 10;
+}
+.chrome.top    { border-bottom: 1px solid var(--hairline); }
+.chrome.bottom { border-top:    1px solid var(--hairline); }
+
+.chrome .brand { display: flex; gap: 1.2rem; align-items: center; }
+.chrome .brand .sep { color: var(--gray); }
+
+.counter { display: flex; gap: 0.45rem; align-items: center; min-width: 6rem; }
+.counter .current { color: var(--ink); font-weight: 500; }
+.counter .total   { color: var(--gray); }
+
+.controls { display: flex; gap: 0.6rem; }
+.controls button {
+  background: transparent;
+  border: 1px solid var(--hairline);
+  padding: 0.4rem 0.85rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.controls button:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.controls button:disabled { opacity: 0.3; cursor: not-allowed; }
+.controls button:disabled:hover { background: transparent; color: var(--ink-soft); border-color: var(--hairline); }
+
+/* ─── STAGE ──────────────────────────────────────────────── */
+
+.stage { flex: 1; position: relative; overflow: hidden; }
+
+.slide {
+  position: absolute; inset: 0;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 3.25rem 5rem 2.75rem;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(21,20,15,0.18) transparent;
+}
+.slide::-webkit-scrollbar       { width: 6px; }
+.slide::-webkit-scrollbar-track { background: transparent; }
+.slide::-webkit-scrollbar-thumb { background: rgba(21,20,15,0.15); }
+.slide.active { opacity: 1; visibility: visible; }
+
+.slide.active .reveal { animation: rise 0.7s cubic-bezier(0.2, 0, 0, 1) both; }
+.slide.active .reveal:nth-child(1) { animation-delay: 0.05s; }
+.slide.active .reveal:nth-child(2) { animation-delay: 0.13s; }
+.slide.active .reveal:nth-child(3) { animation-delay: 0.21s; }
+.slide.active .reveal:nth-child(4) { animation-delay: 0.29s; }
+.slide.active .reveal:nth-child(5) { animation-delay: 0.37s; }
+.slide.active .reveal:nth-child(6) { animation-delay: 0.45s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide, .slide .reveal {
+    transition: opacity 0.15s linear;
+    animation: none !important;
+  }
+}
+
+/* ─── MARKER ─────────────────────────────────────────────── */
+
+.marker {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 2rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.marker .num  { color: var(--ink); font-weight: 500; font-size: 0.85rem; }
+.marker .rule { flex: none; width: 2.5rem; height: 1px; background: var(--ink); }
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.headline {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 5.6vw, 5.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  font-variation-settings: 'opsz' 144, 'SOFT' 0;
+  color: var(--ink);
+}
+
+.subhead {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  font-variation-settings: 'opsz' 96;
+  color: var(--ink);
+  max-width: 24ch;
+}
+
+.lede {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  line-height: 1.28;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  max-width: 30ch;
+}
+.lede em { font-style: italic; color: var(--accent); }
+
+.pull-quote {
+  font-family: var(--serif);
+  font-weight: 350;
+  font-size: clamp(2rem, 4.2vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-variation-settings: 'opsz' 144;
+  color: var(--ink);
+  max-width: 24ch;
+}
+.pull-quote em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  color: var(--accent);
+}
+
+.body {
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 56ch;
+  font-weight: 400;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--ink); font-weight: 500; }
+
+.caption {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  color: var(--gray);
+  text-transform: uppercase;
+}
+
+/* feature statement — accent-ruled */
+.feature {
+  border-left: 2px solid var(--accent);
+  padding: 0.15rem 0 0.15rem 1.4rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  line-height: 1.36;
+  color: var(--ink);
+  max-width: 44ch;
+}
+.feature em { font-style: italic; color: var(--accent); }
+
+/* ─── PLACEHOLDER FIGURE ─────────────────────────────────── */
+
+.fig { display: flex; flex-direction: column; width: 100%; }
+.fig .frame {
+  background: var(--paper-deep);
+  border: 1.5px solid var(--ink);
+  position: relative;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 1rem 1.1rem;
+  min-height: 220px;
+  overflow: hidden;
+  width: 100%;
+}
+.fig .frame::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg, transparent, transparent 18px,
+    rgba(21, 20, 15, 0.045) 18px, rgba(21, 20, 15, 0.045) 19px);
+  pointer-events: none;
+}
+.fig .tag {
+  position: relative;
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink); font-weight: 500;
+  background: var(--paper); padding: 0.35rem 0.55rem;
+  align-self: flex-start; border: 1px solid var(--ink);
+}
+.fig .spec {
+  position: relative;
+  font-family: var(--mono); font-size: 0.62rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-soft); align-self: flex-end;
+}
+.fig .desc {
+  position: relative;
+  font-family: var(--sans); font-size: 0.85rem; font-style: italic;
+  color: var(--ink-soft); line-height: 1.45;
+  max-width: 34ch; margin: 0.9rem 0;
+}
+.fig figcaption {
+  font-family: var(--mono); font-size: 0.65rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--gray); padding-top: 0.6rem;
+}
+
+/* ─── LAYOUT HELPERS ─────────────────────────────────────── */
+
+.flex-fill { flex: 1; display: flex; flex-direction: column; }
+.v-center  { justify-content: center; }
+.spread    { justify-content: space-between; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.two-col.balanced { grid-template-columns: 1fr 1fr; }
+.two-col.lead     { grid-template-columns: 1.5fr 1fr; gap: 4.5rem; }
+
+.col-head {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* ─── COVER ──────────────────────────────────────────────── */
+
+.slide-cover { justify-content: space-between; padding-top: 3.75rem; padding-bottom: 3.75rem; }
+.slide-cover .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.slide-cover .cover-foot {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end;
+}
+.slide-cover .cover-foot .right { text-align: right; }
+
+/* ─── BULLET LIST ────────────────────────────────────────── */
+
+.blist { list-style: none; }
+.blist li {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  padding: 0.72rem 0 0.72rem 1.4rem;
+  border-bottom: 1px solid var(--hairline);
+  position: relative;
+}
+.blist li:first-child { border-top: 1px solid var(--hairline); }
+.blist li::before {
+  content: ''; position: absolute; left: 0; top: 1.12rem;
+  width: 6px; height: 6px; background: var(--accent);
+}
+.blist.plain li::before { background: var(--ink); width: 5px; height: 5px; top: 1.15rem; }
+
+/* ─── FACT LINE (credentials) ────────────────────────────── */
+
+.factline {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1px solid var(--hairline);
+}
+.factline .fact {
+  padding: 0.95rem 1.5rem 0.95rem 0;
+  font-family: var(--mono);
+  font-size: 0.71rem;
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.factline .fact strong { color: var(--ink); font-weight: 500; }
+
+/* ─── THREE-COLUMN DETAIL ────────────────────────────────── */
+
+.col3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+.col3 .c3 .c3-h {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500; margin-bottom: 0.7rem;
+}
+.col3 .c3 .c3-b {
+  font-family: var(--sans); font-size: 0.86rem;
+  line-height: 1.5; color: var(--ink-soft);
+}
+.col3 .c3 .c3-b .pf {
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.04em; color: var(--ink); line-height: 1.7;
+}
+
+/* ─── EXCHANGE HERO ──────────────────────────────────────── */
+
+.exchange {
+  border: 1.5px solid var(--ink);
+  background: var(--paper-deep);
+  display: grid;
+  grid-template-columns: 1fr 4.5rem 1.32fr;
+  margin: 0.25rem 0 1.5rem;
+}
+.exchange .x-side { padding: 2.1rem 2.25rem; }
+.exchange .x-provide {
+  display: flex; flex-direction: column; justify-content: center; gap: 0.85rem;
+}
+.exchange .x-conn {
+  border-left: 1px solid var(--hairline);
+  border-right: 1px solid var(--hairline);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 1.9rem; color: var(--accent);
+}
+.exchange .x-label {
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray);
+}
+.exchange .x-provide .x-label { color: var(--accent); font-weight: 500; }
+.exchange .x-big {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  line-height: 1; letter-spacing: -0.02em; color: var(--ink);
+}
+.exchange .x-spec {
+  font-family: var(--mono); font-size: 0.69rem;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--ink-soft); line-height: 1.7;
+}
+.exchange .x-recv { display: flex; flex-direction: column; }
+.exchange .x-recv .x-label { margin-bottom: 1.15rem; }
+.exchange .recv-item { padding: 0.95rem 0; border-top: 1px solid var(--hairline); }
+.exchange .recv-item:first-of-type { border-top: 0; padding-top: 0; }
+.exchange .recv-item:last-of-type   { padding-bottom: 0; }
+.exchange .recv-item .ri-tag {
+  font-family: var(--serif); font-style: italic;
+  font-size: 1.1rem; color: var(--ink); margin-bottom: 0.3rem;
+}
+.exchange .recv-item .ri-text {
+  font-family: var(--sans); font-size: 0.9rem;
+  line-height: 1.5; color: var(--ink-soft);
+}
+
+/* ─── PHASE GRID ─────────────────────────────────────────── */
+
+.phase-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1.5px solid var(--ink);
+  border-left: 1.5px solid var(--ink);
+  margin-top: 1rem;
+}
+.phase {
+  border-right: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding: 1.6rem 1.7rem;
+  display: flex; flex-direction: column;
+}
+.phase .p-kicker {
+  font-family: var(--mono); font-size: 0.67rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500; margin-bottom: 0.55rem;
+}
+.phase .p-title {
+  font-family: var(--serif); font-size: 1.4rem; font-weight: 400;
+  line-height: 1.08; letter-spacing: -0.01em; color: var(--ink);
+}
+.phase .p-eps {
+  font-family: var(--mono); font-size: 0.66rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--gray); margin: 0.45rem 0 0.85rem;
+}
+.phase .p-body {
+  font-family: var(--sans); font-size: 0.85rem;
+  line-height: 1.5; color: var(--ink-soft); margin-bottom: 1rem;
+}
+.phase .p-meta {
+  margin-top: auto; padding-top: 0.85rem;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--mono); font-size: 0.63rem;
+  letter-spacing: 0.04em; line-height: 1.85;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+.phase .p-meta b { color: var(--accent); font-weight: 500; }
+
+/* ─── EPISODE ARC ────────────────────────────────────────── */
+
+.ep-arc { margin-top: 0.25rem; }
+.ep-group + .ep-group { margin-top: 1.5rem; }
+.ep-group .eg-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500;
+  padding-bottom: 0.55rem; border-bottom: 1.5px solid var(--ink);
+}
+.ep-group .eg-head .eg-range { color: var(--gray); }
+.ep-row {
+  display: grid; grid-template-columns: 3.25rem 1fr;
+  gap: 1.5rem; align-items: baseline;
+  padding: 0.6rem 0; border-bottom: 1px solid var(--hairline);
+}
+.ep-row .er-ix {
+  font-family: var(--mono); font-size: 0.72rem;
+  color: var(--gray); font-weight: 500;
+}
+.ep-row .er-ti {
+  font-family: var(--serif); font-size: 1.1rem;
+  font-weight: 400; color: var(--ink); letter-spacing: -0.005em;
+}
+
+/* ─── NUMBERED DELIVERABLES ──────────────────────────────── */
+
+.num-list { display: grid; margin-top: 0.25rem; }
+.num-list .item {
+  display: grid;
+  grid-template-columns: 2.75rem 15rem 1fr;
+  gap: 1.5rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--hairline);
+  align-items: baseline;
+}
+.num-list .item:last-child { border-bottom: 1px solid var(--hairline); }
+.num-list .item .ix {
+  font-family: var(--mono); font-size: 0.72rem;
+  color: var(--accent); font-weight: 500;
+}
+.num-list .item .ti {
+  font-family: var(--serif); font-size: 1.08rem;
+  font-weight: 400; line-height: 1.22; color: var(--ink);
+}
+.num-list .item .dc {
+  font-family: var(--sans); font-size: 0.86rem;
+  line-height: 1.5; color: var(--ink-soft);
+}
+
+/* ─── BIG NUMBER ─────────────────────────────────────────── */
+
+.bignum {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(5rem, 13vw, 11.5rem);
+  line-height: 0.82; letter-spacing: -0.045em;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 144;
+}
+.bignum .plus { color: var(--accent); }
+.statset { margin-top: 1.5rem; }
+.statset .stat {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.62rem 0; border-bottom: 1px solid var(--hairline);
+  font-family: var(--mono); font-size: 0.74rem;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft);
+}
+.statset .stat:first-child { border-top: 1px solid var(--hairline); }
+.statset .stat .v { color: var(--ink); font-weight: 500; }
+
+/* ─── UNIT CARDS (Elise) ─────────────────────────────────── */
+
+.unit-cards {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; margin: 0.75rem 0 1.25rem;
+}
+.unit-card {
+  border: 1.5px solid var(--ink);
+  padding: 1.6rem 1.75rem;
+  display: flex; flex-direction: column; gap: 0.7rem;
+}
+.unit-card.hero { background: var(--paper-deep); }
+.unit-card .uc-label {
+  font-family: var(--mono); font-size: 0.69rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray);
+}
+.unit-card.hero .uc-label { color: var(--accent); font-weight: 500; }
+.unit-card .uc-name {
+  font-family: var(--serif); font-size: 2.05rem; font-weight: 400;
+  line-height: 1; letter-spacing: -0.02em; color: var(--ink);
+}
+.unit-card.calm .uc-name { color: var(--gray); }
+.unit-card .uc-note {
+  font-family: var(--sans); font-size: 0.88rem;
+  line-height: 1.5; color: var(--ink-soft);
+}
+
+/* ─── REASONS (two-up panels) ────────────────────────────── */
+
+.reasons {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-top: 1.5px solid var(--ink);
+  border-left: 1.5px solid var(--ink);
+  margin-top: 1rem;
+}
+.reason {
+  border-right: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding: 1.85rem 2.1rem;
+  display: flex; flex-direction: column;
+}
+.reason .r-num {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500; margin-bottom: 0.8rem;
+}
+.reason .r-head {
+  font-family: var(--serif); font-size: 1.5rem; font-weight: 400;
+  line-height: 1.1; letter-spacing: -0.01em;
+  color: var(--ink); margin-bottom: 0.85rem; max-width: 20ch;
+}
+.reason .r-body {
+  font-family: var(--sans); font-size: 0.9rem;
+  line-height: 1.55; color: var(--ink-soft);
+}
+
+/* ─── CLOSER ─────────────────────────────────────────────── */
+
+.closer { display: flex; flex-direction: column; justify-content: center; flex: 1; }
+.closer .q-tag {
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500; margin-bottom: 2rem;
+}
+.closer .q-text {
+  font-family: var(--serif); font-weight: 350;
+  font-size: clamp(2rem, 4.2vw, 4rem);
+  line-height: 1.09; letter-spacing: -0.022em;
+  color: var(--ink); max-width: 26ch;
+}
+.closer .q-text em {
+  font-style: italic; color: var(--accent);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+
+/* ─── CONTACT ────────────────────────────────────────────── */
+
+.contact-wrap {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 5rem; flex: 1; align-items: stretch;
+}
+.contact-card { display: flex; flex-direction: column; justify-content: flex-end; }
+.contact-card .label {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 0.75rem;
+}
+.contact-card .names {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+  font-weight: 400; line-height: 1.05;
+  color: var(--ink); letter-spacing: -0.02em;
+}
+.contact-card .meta {
+  font-family: var(--mono); font-size: 0.85rem;
+  margin-top: 1.25rem; color: var(--ink-soft); line-height: 1.85;
+}
+.contact-card .meta a {
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+.checklist .item {
+  display: grid; grid-template-columns: 2.75rem 1fr;
+  gap: 1rem; align-items: baseline;
+  padding: 0.82rem 0; border-bottom: 1px solid var(--hairline);
+}
+.checklist .item:first-child { border-top: 1.5px solid var(--ink); }
+.checklist .item .ix {
+  font-family: var(--mono); font-size: 0.7rem;
+  color: var(--accent); letter-spacing: 0.06em;
+}
+.checklist .item .text {
+  font-family: var(--sans); font-size: 0.95rem;
+  color: var(--ink); line-height: 1.42;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .slide { padding: 2.5rem 3rem; }
+  .two-col, .two-col.balanced, .two-col.lead, .contact-wrap {
+    grid-template-columns: 1fr; gap: 2.5rem;
+  }
+  .phase-grid, .col3 { grid-template-columns: 1fr; }
+  .reasons, .unit-cards { grid-template-columns: 1fr; }
+  .factline { grid-template-columns: 1fr; }
+  .factline .fact { border-bottom: 1px solid var(--hairline); padding-right: 0; }
+  .exchange { grid-template-columns: 1fr; }
+  .exchange .x-conn {
+    border: 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+    padding: 0.6rem 0; transform: rotate(90deg);
+  }
+  .num-list .item { grid-template-columns: 2.75rem 1fr; }
+  .num-list .item .dc { grid-column: 2; padding-top: 0.2rem; }
+}
+
+@media (max-height: 740px) and (min-width: 1100px) {
+  .slide { padding: 2.25rem 4rem; }
+  .marker { margin-bottom: 1.4rem; }
+  .fig .frame { min-height: 170px; }
+}
+
+/* ─── MOBILE: fixed deck → scrollable single page ────────── */
+
+@media (max-width: 768px) {
+  html, body { overflow: auto; height: auto; min-height: 100vh; }
+  .deck { position: relative; height: auto; }
+  .chrome.top { position: sticky; top: 0; background: var(--paper); z-index: 100; }
+  .chrome .desktop-only { display: none; }
+  .stage { overflow: visible; flex: none; height: auto; position: relative; }
+  .slide {
+    position: relative !important;
+    opacity: 1 !important; visibility: visible !important;
+    height: auto !important; overflow: visible !important;
+    transition: none !important;
+    padding: 2.25rem 1.35rem;
+    border-bottom: 1px solid var(--hairline);
+    scroll-margin-top: 3.5rem;
+  }
+  .slide:last-child { border-bottom: none; }
+  .slide .reveal, .slide.active .reveal {
+    animation: none !important; opacity: 1 !important; transform: none !important;
+  }
+  .chrome.bottom { display: none; }
+  .slide-cover { gap: 2rem; justify-content: flex-start; }
+  .slide-cover .cover-foot { grid-template-columns: 1fr; gap: 1.5rem; }
+  .slide-cover .cover-foot .right { text-align: left; }
+  .headline   { font-size: clamp(2.1rem, 9vw, 3.4rem); }
+  .pull-quote { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+  .closer .q-text { font-size: clamp(1.65rem, 7.5vw, 2.7rem); }
+  .ep-group .eg-head { flex-direction: column; gap: 0.2rem; align-items: flex-start; }
+}
+
+/* ─── PRINT: one slide per landscape page ────────────────── */
+
+@media print {
+  @page { size: landscape; margin: 0; }
+
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  html, body {
+    overflow: visible; height: auto; width: auto;
+    background: var(--paper);
+  }
+
+  .deck { position: static; height: auto; display: block; }
+
+  .chrome { display: none !important; }
+
+  .stage { position: static; overflow: visible; height: auto; display: block; }
+
+  .slide {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 3rem 4.5rem;
+    transition: none !important;
+    break-after: page;
+    page-break-after: always;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .slide:last-child { break-after: auto; page-break-after: auto; }
+
+  .slide .reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+<header class="chrome top">
+  <div class="brand">
+    <span>Millhouse</span>
+    <span class="sep">&times;</span>
+    <span>M Residences Katipunan</span>
+  </div>
+  <div class="desktop-only">A Content Partnership Proposal &middot; May 2026</div>
+</header>
+
+<main class="stage" id="stage">
+
+  <!-- ─── 01 / COVER ─────────────────────────────────────── -->
+  <section class="slide slide-cover active" data-slide="1">
+    <div class="cover-top reveal">
+      <div class="eyebrow">A content partnership proposal</div>
+      <div class="eyebrow">Confidential</div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow" style="margin-bottom:1.5rem;">Prepared for VCDC</div>
+      <h1 class="headline" style="max-width:18ch;">The M Residences Story,<br>Told From the Inside.</h1>
+    </div>
+    <div class="cover-foot reveal">
+      <div class="caption">
+        Presented by Imee Magdaraog<br>
+        Co-founder, Mayfair &amp; Co.<br>
+        Channel &middot; Millhouse on TikTok, Instagram &amp; YouTube
+      </div>
+      <div class="caption right">
+        For Victor Consunji<br>
+        Founder &amp; CEO, VCDC<br>
+        M Residences Katipunan &middot; May 2026
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 02 / WHO'S BEHIND IT ───────────────────────────── -->
+  <section class="slide" data-slide="2">
+    <div class="marker reveal">
+      <span class="num">02</span><span class="rule"></span><span>Who's behind it</span>
+    </div>
+    <div class="two-col lead" style="flex:1; align-items:start;">
+      <div>
+        <div class="reveal">
+          <h2 class="subhead">A professional whose judgment people trust with their homes.</h2>
+        </div>
+        <div class="reveal" style="margin-top:1.6rem;">
+          <p class="body">Imee Magdaraog is the co-founder of Mayfair &amp; Co., a pioneer in premium home organizing accessories and home staging. Her staging work turns houses into truly livable homes: spaces shaped around how a family actually lives, not just how a room looks in a photo.</p>
+        </div>
+        <div class="reveal" style="margin-top:1.6rem;">
+          <p class="feature">Mayfair is a <em>taste business.</em> When Imee stages a home, she is not presenting options to choose from. She is making decisions. Clients accept them because they trust her eye. That trust is the business, and it is the same trust her audience brings to everything she shows them.</p>
+        </div>
+      </div>
+      <div class="reveal" style="padding-top:0.4rem;">
+        <figure class="fig">
+          <div class="frame" style="aspect-ratio:4/5; min-height:0;">
+            <span class="tag">Photo 01</span>
+            <p class="desc">Imee inside an M Residences unit during a staging project. Working, not posing. Natural light, furniture placement in progress.</p>
+            <span class="spec">1200 &times; 1500 / Warm-tone</span>
+          </div>
+          <figcaption>The staging professional who became the buyer.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 03 / THE CREDENTIAL ────────────────────────────── -->
+  <section class="slide" data-slide="3">
+    <div class="marker reveal">
+      <span class="num">03</span><span class="rule"></span><span>The credential</span>
+    </div>
+    <div class="flex-fill spread">
+      <div class="reveal">
+        <p class="pull-quote">She is not a content creator who found a nice property. She is a professional who knows exactly what she is <em>looking at,</em> and why she chose M&nbsp;Residences.</p>
+      </div>
+      <div class="reveal" style="margin:2rem 0 1.75rem;">
+        <div class="factline">
+          <div class="fact"><strong>BS Interior Design.</strong><br>Years in residential &amp; commercial interiors.</div>
+          <div class="fact"><strong>Featured speaker, Stage to Live.</strong><br>April 2026, with Ortigas Land.</div>
+          <div class="fact"><strong>Mother of three.</strong><br>Running two businesses.</div>
+        </div>
+      </div>
+      <div class="reveal col3">
+        <div class="c3">
+          <div class="c3-h">Mayfair &amp; Co.</div>
+          <div class="c3-b">Staging, sourcing, and organizing for celebrities, influencers, and prominent Metro Manila personalities. Every staged home proves Mayfair's taste translates into a real space for a real family.</div>
+        </div>
+        <div class="c3">
+          <div class="c3-h">Staging portfolio</div>
+          <div class="c3-b"><span class="pf">Dasmari&ntilde;as Village &middot; Ayala Alabang &middot; Hillsborough &middot; Rockwell &middot; Mt. Malarayat &middot; M Residences</span><br>&hellip; and many more.</div>
+        </div>
+        <div class="c3">
+          <div class="c3-h">Millhouse</div>
+          <div class="c3-b">Imee's personal content channel: the real process of a founder building her own home, on camera. Not scripted, not sponsored. TikTok, Instagram, YouTube.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 04 / THE OFFER ─────────────────────────────────── -->
+  <section class="slide" data-slide="4">
+    <div class="marker reveal">
+      <span class="num">04</span><span class="rule"></span><span>The offer</span>
+    </div>
+    <div class="flex-fill v-center">
+      <div class="reveal">
+        <h2 class="lede" style="max-width:34ch; margin-bottom:0.4rem;">What we propose, stated as one exchange.</h2>
+      </div>
+      <div class="reveal">
+        <div class="exchange">
+          <div class="x-side x-provide">
+            <span class="x-label">VCDC provides</span>
+            <span class="x-big">One Elise unit</span>
+            <span class="x-spec">M Residences Katipunan<br>Two-floor &middot; four-bedroom layout</span>
+          </div>
+          <div class="x-conn" aria-hidden="true">&#8644;</div>
+          <div class="x-side x-recv">
+            <span class="x-label">VCDC receives</span>
+            <div class="recv-item">
+              <div class="ri-tag">In cash</div>
+              <div class="ri-text">The Aerin's quoted contract price, from a committed buyer ready to proceed.</div>
+            </div>
+            <div class="recv-item">
+              <div class="ri-tag">As partnership</div>
+              <div class="ri-text">The full content library: a nine-episode documentary, all raw footage, a compilation, a final walkthrough, an editorial feature. Owned outright, every channel, no expiry.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="feature">The content partnership bridges the Aerin's contract price to the Elise's value. Neither side is doing the other a favor. <em>Both are getting something they genuinely want.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 05 / WHY THIS WORKS ────────────────────────────── -->
+  <section class="slide" data-slide="5">
+    <div class="marker reveal">
+      <span class="num">05</span><span class="rule"></span><span>Why this works</span>
+    </div>
+    <div class="two-col lead" style="flex:1; align-items:center;">
+      <div class="reveal">
+        <p class="pull-quote">No content campaign can manufacture this kind of trust. It has to be lived, and it only works because, for Imee, this is <em>genuinely her life.</em></p>
+      </div>
+      <div class="reveal">
+        <p class="body">Imee is buying a home. Not a set, not a shoot location. She chose M Residences the way any serious buyer would: the space, the build, the customization, and a founder who stakes his name on every unit.</p>
+        <p class="body">Because the decision is genuine, the documentary of it is genuine. That is the proof no media budget can produce. And it cuts both ways: Imee gets the home she would have chosen anyway; VCDC gets a credentialed buyer's word, on the record, working as a sales asset for years.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 06 / WHAT VCDC OWNS ────────────────────────────── -->
+  <section class="slide" data-slide="6">
+    <div class="marker reveal">
+      <span class="num">06</span><span class="rule"></span><span>What VCDC owns</span>
+    </div>
+    <div class="reveal">
+      <h2 class="subhead">A co-owned content library. In full. No expiry.</h2>
+    </div>
+    <div class="reveal" style="margin:1.1rem 0 0.4rem;">
+      <p class="body">VCDC receives full rights to everything produced: across every channel, in perpetuity, for any purpose. Digital advertising, sales presentations, showroom use, editorial placement.</p>
+    </div>
+    <div class="reveal">
+      <div class="num-list deliverables">
+        <div class="item">
+          <span class="ix">A</span>
+          <span class="ti">Full republication rights, indefinitely</span>
+          <span class="dc">All series content across VCDC's TikTok, Instagram, Facebook, YouTube, and website. No expiry, no restrictions.</span>
+        </div>
+        <div class="item">
+          <span class="ix">B</span>
+          <span class="ti">Raw footage from every episode</span>
+          <span class="dc">All unedited footage for ads, sales materials, and social. A production library VCDC owns outright.</span>
+        </div>
+        <div class="item">
+          <span class="ix">C</span>
+          <span class="ti">YouTube process compilation</span>
+          <span class="dc">The complete buyer journey in one long-form video, from search to move-in.</span>
+        </div>
+        <div class="item">
+          <span class="ix">D</span>
+          <span class="ti">Final walkthrough &amp; reveal</span>
+          <span class="dc">A completed home with professional commentary from the staging professional who chose it herself.</span>
+        </div>
+        <div class="item">
+          <span class="ix">E</span>
+          <span class="ti">Written editorial feature</span>
+          <span class="dc">A long-form piece on the research and decision, formatted for VCDC's blog or editorial placement.</span>
+        </div>
+        <div class="item">
+          <span class="ix">F</span>
+          <span class="ti">Ongoing organic presence</span>
+          <span class="dc">M Residences as Imee's home throughout all future Millhouse content. No end date, no extra cost.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 07 / THE PATH ──────────────────────────────────── -->
+  <section class="slide" data-slide="7">
+    <div class="marker reveal">
+      <span class="num">07</span><span class="rule"></span><span>The path</span>
+    </div>
+    <div class="reveal">
+      <h2 class="subhead" style="max-width:30ch;">&ldquo;No Compromises: Living Differently.&rdquo; A nine-episode documentary, built in three phases.</h2>
+    </div>
+    <div class="reveal" style="margin-top:0.5rem;">
+      <div class="phase-grid">
+        <div class="phase">
+          <div class="p-kicker">Phase 01</div>
+          <div class="p-title">The Search &amp; the Decision</div>
+          <div class="p-eps">Episodes 01&ndash;07</div>
+          <div class="p-body">Films the buyer's reasoning in real time, through to the customization session where she designs her own interior.</div>
+          <div class="p-meta"><b>Surfaces</b> &nbsp;Space, customization, community<br><b>Checkpoint</b> &nbsp;The decision is on the public record</div>
+        </div>
+        <div class="phase">
+          <div class="p-kicker">Phase 02</div>
+          <div class="p-title">The Build</div>
+          <div class="p-eps">Episode 08</div>
+          <div class="p-body">Films the customization choices becoming real: finishes, lighting, appliances, and the construction quality behind them.</div>
+          <div class="p-meta"><b>Surfaces</b> &nbsp;Build quality, the founder's guarantee<br><b>Checkpoint</b> &nbsp;The advantages captured on film</div>
+        </div>
+        <div class="phase">
+          <div class="p-kicker">Phase 03</div>
+          <div class="p-title">Home</div>
+          <div class="p-eps">Episode 09 &amp; final delivery</div>
+          <div class="p-body">Films move-in day, then closes with the long-form compilation, the final walkthrough, and the editorial feature.</div>
+          <div class="p-meta"><b>Surfaces</b> &nbsp;The finished home, the full case<br><b>Checkpoint</b> &nbsp;VCDC holds the complete library</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 08 / THE EPISODE ARC ───────────────────────────── -->
+  <section class="slide" data-slide="8">
+    <div class="marker reveal">
+      <span class="num">08</span><span class="rule"></span><span>The episode arc</span>
+    </div>
+    <div class="reveal">
+      <h2 class="subhead" style="margin-bottom:1.5rem;">From search to home. One story, told straight.</h2>
+    </div>
+    <div class="reveal ep-arc">
+      <div class="two-col balanced" style="gap:3.5rem; align-items:start;">
+        <div>
+          <div class="ep-group">
+            <div class="eg-head"><span>Phase 01 &middot; The Search &amp; the Decision</span><span class="eg-range">Ep 01&ndash;07</span></div>
+            <div class="ep-row"><span class="er-ix">01</span><span class="er-ti">What I Was Looking For</span></div>
+            <div class="ep-row"><span class="er-ix">02</span><span class="er-ti">What the Market Taught Me</span></div>
+            <div class="ep-row"><span class="er-ix">03</span><span class="er-ti">Why I Looked at Townhouses</span></div>
+            <div class="ep-row"><span class="er-ix">04</span><span class="er-ti">The First Visit Back</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ep-group" style="margin-top:0;">
+            <div class="eg-head"><span>Phase 01 &middot; continued</span><span class="eg-range">Ep 05&ndash;07</span></div>
+            <div class="ep-row"><span class="er-ix">05</span><span class="er-ti">Choosing the One</span></div>
+            <div class="ep-row"><span class="er-ix">06</span><span class="er-ti">The Customization Session</span></div>
+            <div class="ep-row"><span class="er-ix">07</span><span class="er-ti">The Decision</span></div>
+          </div>
+          <div class="ep-group">
+            <div class="eg-head"><span>Phase 02 &middot; The Build</span><span class="eg-range">Ep 08</span></div>
+            <div class="ep-row"><span class="er-ix">08</span><span class="er-ti">What I'm Building Inside</span></div>
+          </div>
+          <div class="ep-group">
+            <div class="eg-head"><span>Phase 03 &middot; Home</span><span class="eg-range">Ep 09</span></div>
+            <div class="ep-row"><span class="er-ix">09</span><span class="er-ti">Home</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="caption" style="margin-top:1.5rem;">60&ndash;180 sec &middot; TikTok &middot; Reels &middot; YouTube long-form</p>
+    </div>
+  </section>
+
+  <!-- ─── 09 / THE REACH ─────────────────────────────────── -->
+  <section class="slide" data-slide="9">
+    <div class="marker reveal">
+      <span class="num">09</span><span class="rule"></span><span>The reach</span>
+    </div>
+    <div class="reveal">
+      <h2 class="subhead">Mayfair's audience is not general. It is the M Residences buyer.</h2>
+    </div>
+    <div class="two-col balanced" style="margin-top:1.75rem; align-items:center;">
+      <div class="reveal">
+        <div class="bignum">75,000<span class="plus">+</span></div>
+        <div class="caption" style="margin-top:0.85rem; color:var(--gray);">Followers &amp; subscribers across Mayfair channels today</div>
+        <div class="statset">
+          <div class="stat"><span>Mayfair Instagram</span><span class="v">57,800</span></div>
+          <div class="stat"><span>Mayfair Email</span><span class="v">17,942</span></div>
+          <div class="stat"><span>Millhouse TikTok</span><span class="v">Built around this story</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="col-head">Who that audience is</div>
+        <ul class="blist">
+          <li>Metro Manila households actively engaged with home design and lifestyle</li>
+          <li>People who follow a trusted home lifestyle brand, thinking seriously about their homes</li>
+          <li>Working families with the income, taste, and intent to invest in where they live</li>
+        </ul>
+        <p class="body" style="margin-top:1.25rem; font-size:0.95rem;">When the broader market hesitates, direct access to an audience already qualified, and already inclined to trust Imee's judgment, is worth more, not less.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 10 / BEYOND THE SERIES ─────────────────────────── -->
+  <section class="slide" data-slide="10">
+    <div class="marker reveal">
+      <span class="num">10</span><span class="rule"></span><span>Beyond the series</span>
+    </div>
+    <div class="reveal">
+      <h2 class="subhead">The series ends. The home, and the content, does not.</h2>
+    </div>
+    <div class="reveal" style="margin:1.1rem 0 0.4rem;">
+      <p class="body">The unit is not a shoot location. It is where Imee lives and works. M Residences stays in frame across two channels, indefinitely, at no additional cost to VCDC.</p>
+    </div>
+    <div class="reveal two-col balanced" style="margin-top:1.4rem; gap:3.5rem;">
+      <div>
+        <div class="col-head">Mayfair content &middot; the professional lens</div>
+        <ul class="blist plain">
+          <li>Product launches and vignettes shot inside the home</li>
+          <li>Staging before-and-afters, with the home as the canvas</li>
+          <li>Brand and creator collaborations set inside the home</li>
+          <li>Design breakdowns and ASMR content</li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-head">Millhouse content &middot; the personal lens</div>
+        <ul class="blist plain">
+          <li>The full documentary series, from search to move-in</li>
+          <li>Staging tutorials and before-and-afters</li>
+          <li>Ongoing home-life documentation as the space evolves</li>
+          <li>A channel that grows with M Residences at its center</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="feature" style="margin-top:1.5rem;">Campaigns end. <em>A home does not.</em></p>
+    </div>
+  </section>
+
+  <!-- ─── 11 / WHY THE ELISE ─────────────────────────────── -->
+  <section class="slide" data-slide="11">
+    <div class="marker reveal">
+      <span class="num">11</span><span class="rule"></span><span>Why the Elise</span>
+    </div>
+    <div class="reveal">
+      <h2 class="subhead">The unit is not a detail. It sets the scale of the story VCDC gets to own.</h2>
+    </div>
+    <div class="reveal unit-cards">
+      <div class="unit-card calm">
+        <div class="uc-label">The baseline</div>
+        <div class="uc-name">Aerin</div>
+        <div class="uc-note">A documentary filmed in the Aerin tells the story of a townhouse. A fine story, and a true one. But contained.</div>
+      </div>
+      <div class="unit-card hero">
+        <div class="uc-label">The proposal</div>
+        <div class="uc-name">Elise</div>
+        <div class="uc-note">The middle of the M Residences range, and exactly the right place for this series. Broad enough in appeal to carry real volume, substantial enough to make a documentary worth watching. Arguably the SKU VCDC has the most reason to push.</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="feature">A series set in the Elise does more than tour a home. <em>It puts a camera on the unit that moves the project.</em></p>
+    </div>
+  </section>
+
+  <!-- ─── 12 / WHY NOW ───────────────────────────────────── -->
+  <section class="slide" data-slide="12">
+    <div class="marker reveal">
+      <span class="num">12</span><span class="rule"></span><span>Why now</span>
+    </div>
+    <div class="reveal">
+      <h2 class="subhead" style="max-width:32ch;">The years ahead are the reason this is worth doing. The filming is the reason it cannot wait.</h2>
+    </div>
+    <div class="reveal">
+      <div class="reasons">
+        <div class="reason">
+          <div class="r-num">Reason 01</div>
+          <div class="r-head">A soft market is when proof does the most work.</div>
+          <div class="r-body">In a slower market, the developments that hold their value are the ones with the most credible proof behind them. A professional who chose M Residences for her own family, on the record, is proof of that exact kind. And because VCDC owns the footage, what it shows of VCDC's standard serves the wider portfolio, not Katipunan alone.</div>
+        </div>
+        <div class="reason">
+          <div class="r-num">Reason 02</div>
+          <div class="r-head">The story films once.</div>
+          <div class="r-body">The customization session, the first walkthrough as a buyer, the moment of choosing: each happens once. None can be staged later or recreated for a camera. The series has to begin where the buyer journey begins, or there is no series.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 13 / WHAT EACH SIDE GETS ───────────────────────── -->
+  <section class="slide" data-slide="13">
+    <div class="marker reveal">
+      <span class="num">13</span><span class="rule"></span><span>What each side gets</span>
+    </div>
+    <div class="reveal">
+      <h2 class="subhead">A fair trade, plainly stated.</h2>
+    </div>
+    <div class="reveal two-col balanced" style="margin-top:1.6rem; gap:3.5rem;">
+      <div>
+        <div class="col-head">VCDC &middot; M Residences Katipunan</div>
+        <ul class="blist">
+          <li>A credentialed, on-the-record buyer story no developer could commission at any price</li>
+          <li>A content library that showcases the Elise and demonstrates the M Residences vision</li>
+          <li>Direct reach to 75,000+ followers and subscribers who fit the M Residences buyer profile</li>
+          <li>Organic, compounding presence for as long as Imee lives in the home, with no end date or ongoing cost</li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-head">Imee &amp; Millhouse</div>
+        <ul class="blist">
+          <li>A home she chose for the reasons that matter: space, quality, customization, community, a founder's guarantee</li>
+          <li>The documentary that launches the Millhouse channel with a story worth telling</li>
+          <li>A professional credential that extends Mayfair's portfolio into the public record</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 14 / THE CLOSE ─────────────────────────────────── -->
+  <section class="slide" data-slide="14">
+    <div class="closer">
+      <div class="reveal"><div class="q-tag">In closing</div></div>
+      <div class="reveal">
+        <p class="q-text">Victor Consunji built M Residences to a standard he would stake his name on. This partnership gives that standard <em>a face</em>: a professional who has seen it from the inside, and chose it for her family.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 15 / NEXT STEPS ────────────────────────────────── -->
+  <section class="slide" data-slide="15">
+    <div class="marker reveal">
+      <span class="num">15</span><span class="rule"></span><span>Next steps</span>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-card reveal">
+        <div class="label">Contact</div>
+        <div class="names">Imee Magdaraog</div>
+        <div class="meta">
+          Co-founder, Mayfair &amp; Co.<br>
+          +63 928 598 4603<br>
+          <a href="mailto:imee@mayfairhome.co">imee@mayfairhome.co</a><br>
+          <a href="https://www.mayfairhome.co" target="_blank" rel="noopener">mayfairhome.co</a><br>
+          <a href="https://www.instagram.com/mayfairandco.home/" target="_blank" rel="noopener">@mayfairandco.home</a>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex; flex-direction:column;">
+        <div class="eyebrow" style="margin-bottom:1rem;">On our side, we are prepared to</div>
+        <div class="checklist">
+          <div class="item"><span class="ix">&rarr; 01</span><span class="text">Walk Victor and the VCDC team through the content series concept in detail.</span></div>
+          <div class="item"><span class="ix">&rarr; 02</span><span class="text">Confirm the Elise and proceed with the purchase commitment.</span></div>
+          <div class="item"><span class="ix">&rarr; 03</span><span class="text">Agree on content rights, deliverable timelines, and the partnership structure.</span></div>
+          <div class="item"><span class="ix">&rarr; 04</span><span class="text">Sign a partnership agreement before the series begins.</span></div>
+        </div>
+        <p class="caption" style="margin-top:2rem; max-width:42ch;">Millhouse is a personal brand and content channel. All research referenced was independently conducted and reflects publicly available information.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="chrome bottom">
+  <div class="counter">
+    <span class="current" id="cur">01</span>
+    <span>/</span>
+    <span class="total" id="total">15</span>
+  </div>
+  <div class="caption" style="font-size:0.65rem; color:var(--gray);">
+    &larr; &rarr; arrow keys to navigate &middot; home to restart
+  </div>
+  <div class="controls">
+    <button id="prev" type="button" aria-label="Previous slide">&larr; Prev</button>
+    <button id="next" type="button" aria-label="Next slide">Next &rarr;</button>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const curEl = document.getElementById('cur');
+  const totalEl = document.getElementById('total');
+  let i = 0;
+
+  totalEl.textContent = String(slides.length).padStart(2, '0');
+
+  function go(n) {
+    n = Math.max(0, Math.min(slides.length - 1, n));
+    if (n === i) return;
+    slides[i].classList.remove('active');
+    slides[n].classList.add('active');
+    slides[n].scrollTop = 0;
+    i = n;
+    curEl.textContent = String(i + 1).padStart(2, '0');
+    prevBtn.disabled = i === 0;
+    nextBtn.disabled = i === slides.length - 1;
+    if (location.hash !== '#' + (i + 1)) {
+      history.replaceState(null, '', '#' + (i + 1));
+    }
+  }
+
+  prevBtn.addEventListener('click', () => go(i - 1));
+  nextBtn.addEventListener('click', () => go(i + 1));
+
+  document.addEventListener('keydown', (e) => {
+    if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+    switch (e.key) {
+      case 'ArrowRight':
+      case 'PageDown':
+      case ' ':
+        e.preventDefault(); go(i + 1); break;
+      case 'ArrowLeft':
+      case 'PageUp':
+        e.preventDefault(); go(i - 1); break;
+      case 'Home':
+        e.preventDefault(); go(0); break;
+      case 'End':
+        e.preventDefault(); go(slides.length - 1); break;
+    }
+  });
+
+  let touchX = null;
+  document.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) touchX = e.touches[0].clientX;
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 60) { dx < 0 ? go(i + 1) : go(i - 1); }
+    touchX = null;
+  }, { passive: true });
+
+  const hashN = parseInt(location.hash.replace('#', ''), 10);
+  if (!isNaN(hashN) && hashN >= 1 && hashN <= slides.length) {
+    go(hashN - 1);
+  } else {
+    prevBtn.disabled = true;
+  }
+})();
+</script>
+
+</body>
+</html>
